@@ -1,23 +1,11 @@
 {
-	"name"       :"happydemon/elements",
+	"name"       :"happydemon/arr",
 	"type"       :"kohana-module",
-	"description":"A Kohana module to help with building HTML navigation menus and breadcrumbs",
-	"keywords"   :["kohana", "menu", "navigation", "kohana module", "breadcrumb", "bootstrap"],
-	"homepage"   :"https://github.com/happyDemon/elements",
+	"description":"A Kohana module that adds extra methods for dealing with arrays and configuration files",
+	"keywords"   :["kohana", "array", "configurations", "kohana module", "save config"],
+	"homepage"   :"https://github.com/happyDemon/arr",
 	"license"    :"MIT",
 	"authors"    :[
-		{
-			"name"    :"Bastian Bräu",
-			"email"   :"mail@bftmedia.de",
-			"homepage":"http://bftmedia.de",
-			"role"    :"Developer"
-		},
-		{
-			"name"    :"Ando Roots",
-			"email"   :"ando@sqroot.eu",
-			"homepage":"http://sqroot.eu",
-			"role"    :"Developer"
-		},
 		{
 			"name"    :"Maxim Kerstens",
 			"email"   :"admin@happydemon.org",
