@@ -1,6 +1,6 @@
 # hD.arr
 
-This module contains adds extra functionality to Kohana containing arrays and configuration.
+This module adds extra functionality to Kohana for arrays and configuration.
 
 ## Arrays
 
