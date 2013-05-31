@@ -6,12 +6,13 @@ This module contains adds extra functionality to Kohana containing arrays and co
 
  - Place a value at a specific point in your array
  - Place or move a key with a value at a specific point in your array
- - Flatten an array (keys become paths)
+ - Flatten an array (keys become paths to the original)
  - Unset a value based on a path
+ - Partition an array
 
 ## Config
 
- - Export a configuration set
+ - Export a configuration set to a file
 
 ##Instalation
 

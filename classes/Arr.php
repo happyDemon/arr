@@ -6,8 +6,8 @@ class Arr extends Kohana_Arr {
 	 * Unset all keys that have empty string values
 	 *
 	 * @static
-	 * @param array $input
-	 * @param boolean $recursive
+	 * @param array $input Array source
+	 * @param boolean $recursive Whether or not to unset values recursively
 	 * @return array
 	 */
 	public static function unset_empty(array &$input, $recursive=false)
@@ -145,6 +145,7 @@ class Arr extends Kohana_Arr {
 	/**
 	 * Returns a list containing all paths this array holds
 	 *
+	 * @param $array array The array source
 	 * @return array
 	 */
 	public static function paths(array $array) {
@@ -174,8 +175,8 @@ class Arr extends Kohana_Arr {
 	/**
 	 * Remove an array entry by path
 	 *
-	 * @param $array array
-	 * @param $path array|string
+	 * @param $array array Source
+	 * @param $path array|string Path to the key you'd want to unset
 	 * @param null $delimiter
 	 * @return bool
 	 */
@@ -280,18 +281,19 @@ class Arr extends Kohana_Arr {
 	/**
 	 * Partitions an array
 	 *
-	 * @param $array array
+	 * @param $array array Source
+	 * @param $size integer Max size of a partition
 	 * @return array
 	 */
-	public static function partition( array $array, $p = 2 )
+	public static function partition( array $array, $size = 2 )
 	{
 	    $listlen = count( $array );
-	    $partlen = floor( $listlen / $p );
-	    $partrem = $listlen % $p;
+	    $partlen = floor( $listlen / $size );
+	    $partrem = $listlen % $size;
 	    $partition = array();
 	    $mark = 0;
 		
-	    for ($px = 0; $px < $p; $px++) {
+	    for ($px = 0; $px < $size; $px++) {
 	        $incr = ($px < $partrem) ? $partlen + 1 : $partlen;
 	        $partition[$px] = array_slice( $array, $mark, $incr );
 	        $mark += $incr;
