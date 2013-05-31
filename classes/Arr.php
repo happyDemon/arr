@@ -276,4 +276,27 @@ class Arr extends Kohana_Arr {
 		// Unable to find the value requested
 		return false;
 	}
+	
+	/**
+	 * Partitions an array
+	 *
+	 * @param $array array
+	 * @return array
+	 */
+	public static function partition( array $array, $p = 2 )
+	{
+	    $listlen = count( $array );
+	    $partlen = floor( $listlen / $p );
+	    $partrem = $listlen % $p;
+	    $partition = array();
+	    $mark = 0;
+		
+	    for ($px = 0; $px < $p; $px++) {
+	        $incr = ($px < $partrem) ? $partlen + 1 : $partlen;
+	        $partition[$px] = array_slice( $array, $mark, $incr );
+	        $mark += $incr;
+	    }
+		
+	    return $partition;
+	}
 }
