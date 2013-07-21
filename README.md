@@ -14,6 +14,10 @@ This module adds extra functionality to Kohana for arrays and configuration.
 
  - Export a configuration set to a file
 
+## Session
+
+ - Retrieve a value stored in session the same way as Arr::path() does
+
 ##Instalation
 
 ### Place the files in your modules directory.
