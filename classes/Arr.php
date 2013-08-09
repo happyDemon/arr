@@ -301,4 +301,39 @@ class Arr extends Kohana_Arr {
 		
 	    return $partition;
 	}
+
+	/**
+	 * Exclude certain keys from the provided array.
+	 *
+	 * If $format is true the return will be formatted to ['free' => [], 'excluded' => []]
+	 * 
+	 * @param array $array
+	 * @param array $keys Keys to exclude from the provided array
+	 * @param bool $format Do we keep excluded keys?
+	 * @return array
+	 */
+	public static function exclude($array, $keys, $format=false)
+	{
+		$list = ($format) ? array('free' => array(), 'excluded' => array()) : array();
+
+		foreach($array as $key => $value) {
+			if ( ! in_array($key, $keys))
+			{
+				if($format)
+				{
+					$list['free'][$key] = $value;
+				}
+				else
+				{
+					$list[$key] = $value;
+				}
+			}
+			else if ($format)
+			{
+				$list['excluded'][$key] = $value;
+			}
+		}
+
+		return $list;
+	}
 }
