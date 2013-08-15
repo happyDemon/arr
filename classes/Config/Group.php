@@ -14,7 +14,12 @@ class Config_Group extends Kohana_Config_Group {
 
 		if(file_exists($location) === false)
 			mkdir($location);
-
+		
+		if(substr($location, -1) != DIRECTORY_SEPERATOR)
+		{
+			$location .= DIRECTORY_SEPERATOR;
+		}
+		
 		return (file_put_contents($location.$this->_group_name.'.php', $content));
 	}
 
