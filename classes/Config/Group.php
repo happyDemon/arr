@@ -15,7 +15,7 @@ class Config_Group extends Kohana_Config_Group {
 		if(file_exists($location) === false)
 			mkdir($location);
 
-		return (file_put_contents($location, $content));
+		return (file_put_contents($location.$this->_group_name.'.php', $content));
 	}
 
 	/**
