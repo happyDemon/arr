@@ -1,10 +1,9 @@
 <?php defined('SYSPATH') OR die('No direct script access.');
 
-
 class Config_Group extends Kohana_Config_Group {
 
 	public function export($location) {
-		$array = serialize($this->getArrayCopy());
+		$array = $this->getArrayCopy();
 
 		$export = str_replace(array('  ', 'array (', "'true'", "'false'",), array("\t", "\tarray(", 'true', 'false'), var_export($array, true));
 		$export = stripslashes($export);
@@ -15,9 +14,9 @@ class Config_Group extends Kohana_Config_Group {
 		if(file_exists($location) === false)
 			mkdir($location);
 		
-		if(substr($location, -1) != DIRECTORY_SEPERATOR)
+		if(substr($location, -1) != DIRECTORY_SEPARATOR)
 		{
-			$location .= DIRECTORY_SEPERATOR;
+			$location .= DIRECTORY_SEPARATOR;
 		}
 		
 		return (file_put_contents($location.$this->_group_name.'.php', $content));
