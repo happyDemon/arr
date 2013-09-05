@@ -3,14 +3,6 @@
 class Config_Group extends Kohana_Config_Group {
 
 	public function export($location) {
-		$array = $this->getArrayCopy();
-
-		$export = str_replace(array('  ', 'array (', "'true'", "'false'",), array("\t", "\tarray(", 'true', 'false'), var_export($array, true));
-		$export = stripslashes($export);
-
-		$content = "<?php defined('SYSPATH') OR die('No direct script access.');" . PHP_EOL . PHP_EOL;
-		$content .= 'return ' . $export . ';';
-
 		if(file_exists($location) === false)
 			mkdir($location);
 		
@@ -18,8 +10,45 @@ class Config_Group extends Kohana_Config_Group {
 		{
 			$location .= DIRECTORY_SEPARATOR;
 		}
-		
-		return (file_put_contents($location.$this->_group_name.'.php', $content));
+
+		$file = $location.$this->_group_name.'.php';
+
+		// Write in file
+		if ( ! $h = fopen($file, 'w+'))
+		{
+			return FALSE;
+		}
+
+		// Block access to the file
+		if (flock($h, LOCK_EX))
+		{
+			$array = $this->getArrayCopy();
+
+			// Modifiers for adjusting appearance
+			$replace = array(
+				"=> \n"    => '=>',
+				'array ('  => 'array(',
+				'  '       => "\t",
+				' false,'  => ' FALSE,',
+				' true,'   => ' TRUE,',
+				' null,'   => ' NULL,',
+				MODPATH    => 'MODPATH',
+				APPPATH    => 'APPPATH',
+				SYSPATH    => 'SYSPATH',
+				DOCROOT    => 'DOCROOT'
+			);
+
+			$array = var_export($array, true);
+			$var = stripslashes(strtr($array, $replace));
+
+			$content = Kohana::FILE_SECURITY.PHP_EOL.PHP_EOL.'return '.$var.';';
+
+			$result = fwrite($h, $content);
+			flock($h, LOCK_UN);
+		}
+		fclose($h);
+
+		return (bool) $result;
 	}
 
 	/**
