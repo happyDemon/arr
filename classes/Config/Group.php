@@ -11,7 +11,7 @@ class Config_Group extends Kohana_Config_Group {
 			$location .= DIRECTORY_SEPARATOR;
 		}
 
-		$file = $location.$this->_group_name.'.php';
+		$file = $location.$this->_group_name.EXT;
 
 		// Write in file
 		if ( ! $h = fopen($file, 'w+'))
