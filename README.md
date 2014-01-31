@@ -52,3 +52,7 @@ Kohana::modules(array(
 # Documentation
 
 The code is mostly commented, a userguide is on its way
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/happyDemon/arr/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
