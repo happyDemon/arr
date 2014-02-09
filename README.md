@@ -53,6 +53,6 @@ Kohana::modules(array(
 
 The code is mostly commented, a userguide is on its way
 
-
+[![Gittip Badge](http://img.shields.io/gittip/happyDemon.svg)](https://www.gittip.com/happyDemon/ "Gittip donations")
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/happyDemon/arr/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
